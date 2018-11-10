@@ -1,55 +1,73 @@
-/******************************************
-Treehouse Techdegree:
-FSJS project 1 - A Random Quote Generator
-******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
+// Quotes array of objects
+
+const quotes = [
+  {
+    quote: "Try again. Fail again. Fail better.",
+    source: "Samuel Beckett"
+  },
+  {
+    quote: "There is scarcely any passion without struggle.",
+    source: "Albert Camus",
+    citation: "The Myth of Sisyphus and Other Essays"
+  },
+  {
+    quote: "One repays a teacher badly if one always remains nothing but a pupil.",
+    source: "Friedrich Nietzsche",
+    citation: "Thus Spoke Zarathustra"
+  },
+  {
+    quote: "The world is, of course, nothing but our conception of it.",
+    source: "Anton Chekhov"
+  },
+  {
+    quote: "Man is nothing else but what he makes of himself.",
+    source: "Jean-Paul Sartre",
+    citation: "Existentialism and Human Emotions"
+  },
+  {
+    quote: "if we possess a why of life we can put up with almost any how.",
+    source: "Friedrich Nietzsche",
+    citation: "Twilight of the Idols"
+  },
+  {
+    quote: "Your positive action combined with positive thinking results in success",
+    source: "Shiv Khera"
+  },
+  {
+    quote: "Adopting the right attitude can convert a negative stress into a positive one",
+    source: "Hans Selye"
+  },
+];
 
 
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
+// function for selecting a random quote
 
-  Recommended: 
-    - Add at least one `year` and/or `citation` property to at least one 
-      quote object.
-***/
+function getRandomQuote(array) {
+  return array[Math.floor(Math.random() * Math.floor(8))];
+}
 
 
+// function to output the selected random quote
 
+function printQuote() {
+ let quote = getRandomQuote(quotes); 
+ let string = `
+ <p class="quote"> ${quote.quote} </p>
+ <p class="source"> ${quote.source}
+ `
+ if (quote.citation) {
+  string += `<span class="citation"> ${quote.citation} </span>
+  </p>`
+ } else {
+  string += `</p>`
+ }
 
-/***
-  Create the `getRandomQuote` function to:
-   - generate a random number 
-   - use the random number to `return` a random quote object from the 
-     `quotes` array.
-***/
+ document.querySelector("#quote-box").innerHTML =  string;
 
+}
 
-
-
-/***
-  Create the `printQuote` function to: 
-   - call the `getRandomQuote` function and assign it to a variable.
-   - use the properties of the quote object stored in the variable to 
-     create your HTML string.
-   - use conditionals to make sure the optional properties exist before 
-     they are added to the HTML string.
-   - set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
-
-
-
-
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
+// Event listener for CTA for getting a new quote
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
