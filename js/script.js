@@ -51,13 +51,12 @@ const quotes = [
 
 // function for selecting a random quote
 
-function getRandomQuote(array) {
-  return array[Math.floor(Math.random() * Math.floor(8))];
-}
+const getRandomQuote = array => array[Math.floor(Math.random() * Math.floor(8))];
+
 
 // function for creating a random background color
 
-function randomBC () {
+const randomBC = () => {
 
   let rgb = 'rgb(' + Math.floor(Math.random() * Math.floor(255)) + ',' + Math.floor(Math.random() * Math.floor(255)) + ',' + Math.floor(Math.random() * Math.floor(255)) + ')';
 
@@ -69,7 +68,7 @@ function randomBC () {
 
 // function to output the selected random quote
 
-function printQuote() {
+const printQuote = () => {
  let quote = getRandomQuote(quotes); 
  let string = `
  <p class="quote"> ${quote.quote} </p>
@@ -77,6 +76,11 @@ function printQuote() {
  `
  if (quote.citation) {
   string += `<span class="citation"> ${quote.citation} </span>
+  `
+ } 
+
+ if (quote.tags) {
+  string += `<span class="citation"> ${quote.tags} </span>
   </p>`
  } else {
   string += `</p>`
@@ -86,6 +90,15 @@ function printQuote() {
  document.querySelector("body").style.backgroundColor = randomBC();
 
 }
+
+// Timer function
+
+const refresh_quote = () => {
+  window.setInterval(printQuote, 20000);
+}
+
+refresh_quote();
+
 
 // Event listener for CTA for getting a new quote
 
