@@ -51,7 +51,7 @@ const quotes = [
 
 // function for selecting a random quote
 
-const getRandomQuote = array => array[Math.floor(Math.random() * Math.floor(8))];
+const getRandomQuote = array => array[Math.floor(Math.random() * Math.floor(quotes.length))];
 
 
 // function for creating a random background color
